@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santuario Nacional Pampa Hermosa | El Corazón Esmeralda de los Andes</title>
+    <meta name="description" content="Guía turística interactiva y oficial del Santuario Nacional Pampa Hermosa en Junín, Perú. Descubre el bosque de cedros gigantes, el Abuelo de 600 años, fauna emblemática, rutas y asistente IA.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: "#ecfdf5", 100: "#d1fae5", 200: "#a7f3d0", 300: "#6ee7b7", 400: "#34d399",
+                            500: "#10b981", 600: "#059669", 700: "#047857", 800: "#065f46", 900: "#064e3b", 950: "#022c22"
+                        },
+                        jungle: { light: "#2d6a4f", DEFAULT: "#1b4332", dark: "#081c15", accent: "#52b788" }
+                    },
+                    fontFamily: {
+                        sans: ["Plus Jakarta Sans", "sans-serif"],
+                        display: ["Outfit", "sans-serif"],
+                        serif: ["Playfair Display", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-nav { background: rgba(8, 28, 21, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(82, 183, 136, 0.2); }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .glass-card-dark { background: rgba(8, 28, 21, 0.75); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(82, 183, 136, 0.25); }
+        .text-gradient { background: linear-gradient(135deg, #a7f3d0 0%, #34d399 50%, #6ee7b7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .mist-overlay { background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.03) 60%, transparent 80%); pointer-events: none; transition: opacity 0.8s ease-in-out; }
+        .nav-link { position: relative; transition: all 0.3s ease; }
+        .nav-link::after { content: ""; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: #52b788; border-radius: 2px; transition: all 0.3s ease; transform: translateX(-50%); }
+        .nav-link:hover::after { width: 80%; box-shadow: 0 0 8px #52b788; }
+        .card-3d { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease; }
+        .card-3d:hover { transform: translateY(-6px) scale(1.015); box-shadow: 0 20px 30px -10px rgba(6, 78, 59, 0.25); }
+        .sound-bar { width: 3px; background-color: #34d399; border-radius: 3px; animation: bounce 1.2s ease-in-out infinite alternate; }
+        @keyframes bounce { 10% { height: 4px; } 50% { height: 16px; } 100% { height: 8px; } }
+        .sound-bar:nth-child(1) { animation-delay: 0.1s; }
+        .sound-bar:nth-child(2) { animation-delay: 0.4s; }
+        .sound-bar:nth-child(3) { animation-delay: 0.2s; }
+        .sound-bar:nth-child(4) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Capa de Neblina Mística -->
+    <div id="mistEffect" class="mist-overlay fixed inset-0 z-20 opacity-0"></div>
+
+    <!-- Barra de Anuncio SERNANP -->
+    <div class="bg-jungle-dark text-emerald-300 text-xs py-1.5 px-4 text-center border-b border-emerald-900/50 flex items-center justify-between z-50 relative">
+        <div class="hidden sm:flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Área Natural Protegida por el <strong>SERNANP</strong> &bull; Santuario Nacional desde 2009</span>
+        </div>
+        <div class="flex items-center justify-center gap-4 mx-auto sm:mx-0">
+            <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Junín: San Ramón y Tarma</span>
+            <span>&bull;</span>
+            <span class="flex items-center gap-1"><i data-lucide="tree-pine" class="w-3.5 h-3.5"></i> 11,543 Hectáreas</span>
+        </div>
+        <div class="hidden md:flex items-center gap-3">
+            <a href="#planificador" class="hover:text-white transition-colors flex items-center gap-1 font-medium">
+                <span>Ruta y Acceso</span>
+                <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Menú de Navegación Principal -->
+    <header class="sticky top-0 z-40 glass-nav text-white transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-800 p-0.5 shadow-lg shadow-emerald-900/30 group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-jungle-dark rounded-[14px] flex items-center justify-center text-emerald-400">
+                            <i data-lucide="mountain-snow" class="w-6 h-6 group-hover:rotate-6 transition-transform"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-display font-extrabold text-base sm:text-lg tracking-tight leading-tight flex items-center gap-1.5">
+                            PAMPA HERMOSA
+                            <span class="text-[10px] uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">Oficial</span>
+                        </div>
+                        <p class="text-[11px] text-emerald-300/80">Santuario Nacional &bull; Selva Central</p>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
+                    <a href="#inicio" class="nav-link text-emerald-100 hover:text-emerald-300 py-2">Inicio</a>
+                    <a href="#cedro-abuelo" class="nav-link text-emerald-100 hover:text-emerald-300 py-2">El Cedro Abuelo</a>
+                    <a href="#biodiversidad" class="nav-link text-emerald-100 hover:text-emerald-300 py-2">Flora & Fauna</a>
+                    <a href="#agua" class="nav-link text-emerald-100 hover:text-emerald-300 py-2">Cascadas & Agua</a>
+                    <a href="#planificador" class="nav-link text-emerald-100 hover:text-emerald-300 py-2">Cómo Llegar</a>
+                    <a href="#galeria" class="nav-link text-emerald-100 hover:text-emerald-300 py-2">Galería</a>
+                    <a href="#comunidad" class="nav-link text-emerald-100 hover:text-emerald-300 py-2">Opiniones</a>
+                </nav>
+
+                <div class="hidden sm:flex items-center gap-3">
+                    <button id="soundToggleBtn" onclick="toggleRainforestSound()" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-950/80 border border-emerald-500/30 hover:border-emerald-400 text-xs font-medium text-emerald-300 transition-all shadow-sm" title="Activar sonido ambiente del bosque nuboso">
+                        <i data-lucide="volume-2" id="soundIcon" class="w-4 h-4"></i>
+                        <span id="soundText">Audio Selva</span>
+                        <div id="soundWaves" class="hidden items-end gap-0.5 h-3">
+                            <span class="sound-bar"></span>
+                            <span class="sound-bar"></span>
+                            <span class="sound-bar"></span>
+                            <span class="sound-bar"></span>
+                        </div>
+                    </button>
+
+                    <button onclick="toggleMist()" class="p-2 rounded-xl bg-emerald-950/80 border border-emerald-500/30 hover:border-emerald-400 text-emerald-300 text-xs transition-all" title="Efecto de neblina mística">
+                        <i data-lucide="cloud-fog" class="w-4 h-4"></i>
+                    </button>
+
+                    <button onclick="openAIChat('¡Hola! Cuéntame qué maravillas tiene Pampa Hermosa.')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 text-jungle-dark font-extrabold text-xs shadow-md shadow-emerald-500/30 hover:scale-105 transition-all">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>Asistente IA</span>
+                    </button>
+                </div>
+
+                <div class="lg:hidden flex items-center gap-2">
+                    <button onclick="openAIChat()" class="p-2 rounded-xl bg-emerald-500 text-jungle-dark font-bold">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/30 text-emerald-300">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden lg:hidden bg-jungle-dark/95 border-b border-emerald-500/20 px-6 py-6 space-y-4 backdrop-blur-2xl">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block text-emerald-100 hover:text-emerald-400 py-1 font-medium">🌿 Inicio</a>
+            <a href="#cedro-abuelo" onclick="toggleMobileMenu()" class="block text-emerald-100 hover:text-emerald-400 py-1 font-medium">🌳 El Cedro Abuelo (51m)</a>
+            <a href="#biodiversidad" onclick="toggleMobileMenu()" class="block text-emerald-100 hover:text-emerald-400 py-1 font-medium">🐾 Flora & Fauna Silvestre</a>
+            <a href="#agua" onclick="toggleMobileMenu()" class="block text-emerald-100 hover:text-emerald-400 py-1 font-medium">💧 Cascadas & Agua</a>
+            <a href="#planificador" onclick="toggleMobileMenu()" class="block text-emerald-100 hover:text-emerald-400 py-1 font-medium">🎒 Planificador & Rutas</a>
+            <a href="#galeria" onclick="toggleMobileMenu()" class="block text-emerald-100 hover:text-emerald-400 py-1 font-medium">📸 Galería Fotográfica</a>
+            <a href="#trivia" onclick="toggleMobileMenu()" class="block text-emerald-100 hover:text-emerald-400 py-1 font-medium">🎯 Eco-Trivia</a>
+            <a href="#comunidad" onclick="toggleMobileMenu()" class="block text-emerald-100 hover:text-emerald-400 py-1 font-medium">💬 Opiniones & Buzón</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-jungle-dark text-white pt-8 pb-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=2000&auto=format&fit=crop" 
+                 alt="Bosque Nuboso Andino Pampa Hermosa" 
+                 class="w-full h-full object-cover object-center scale-105 opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-jungle-dark via-jungle-dark/70 to-jungle-dark/30"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm font-semibold mb-8 shadow-inner backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>Santuario Nacional Pampa Hermosa &bull; Reserva de Biosfera UNESCO</span>
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
+                El Corazón Esmeralda de los <span class="text-gradient">Andes y la Selva</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-stone-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                Un refugio intacto donde la neblina abraza montañas milenarias, los cedros gigantes custodian la historia y cada sendero revela una belleza inolvidable. Explora el último santuario virgen de Junín.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#cedro-abuelo" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 text-jungle-dark font-extrabold text-base shadow-xl shadow-emerald-500/25 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    <span>Conocer el Santuario</span>
+                    <i data-lucide="compass" class="w-5 h-5"></i>
+                </a>
+
+                <a href="#planificador" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-stone-900/80 hover:bg-stone-800 text-white font-bold text-base border border-emerald-500/30 hover:border-emerald-400 backdrop-blur-md transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="map" class="w-5 h-5 text-emerald-400"></i>
+                    <span>Planificar Mi Viaje</span>
+                </a>
+
+                <button onclick="openAIChat('Hola, quiero conocer los datos más curiosos e importantes de Pampa Hermosa')" class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-emerald-950/60 hover:bg-emerald-900 text-emerald-300 font-semibold text-base border border-emerald-500/20 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="bot" class="w-5 h-5 text-emerald-400"></i>
+                    <span>Preguntar a la IA</span>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-emerald-800/40 text-left">
+                <div class="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/10 backdrop-blur-sm">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-display">11,543</div>
+                    <div class="text-xs text-stone-400 font-medium uppercase">Hectáreas Protegidas</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/10 backdrop-blur-sm">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 font-display">51 m</div>
+                    <div class="text-xs text-stone-400 font-medium uppercase">Cedro El Abuelo</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/10 backdrop-blur-sm">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-teal-300 font-display">1,400 - 3,900</div>
+                    <div class="text-xs text-stone-400 font-medium uppercase">msnm Altitud</div>
+                </div>
+                <div class="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/10 backdrop-blur-sm">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-emerald-300 font-display">Abr - Oct</div>
+                    <div class="text-xs text-stone-400 font-medium uppercase">Mejor Época de Visita</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección El Cedro Abuelo -->
+    <section id="cedro-abuelo" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs uppercase font-extrabold tracking-widest text-emerald-700 bg-emerald-100 px-3.5 py-1.5 rounded-full">Tesoro Botánico del Perú</span>
+            <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-stone-900 mt-4 mb-4">
+                El Bosque de los <span class="text-emerald-700">Cedros Gigantes</span>
+            </h2>
+            <p class="text-stone-600 text-base sm:text-lg">
+                Pampa Hermosa protege el único bosque relicto de <strong>Cedro de Altura (*Cedrela lilloi*)</strong> en todo el Perú, hogar de ejemplares milenarios que desafían el tiempo.
+            </p>
+        </div>
+
+        <div class="bg-gradient-to-br from-jungle-dark via-jungle to-emerald-950 rounded-[32px] overflow-hidden shadow-2xl text-white border border-emerald-800/40 p-8 sm:p-12 mb-16 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-6 relative">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-emerald-500/30 group">
+                        <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=1200&auto=format&fit=crop" 
+                             alt="El Abuelo Cedro Gigante" 
+                             class="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="absolute -top-3 -left-3 bg-amber-400 text-stone-950 font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow-lg flex items-center gap-1.5">
+                        <i data-lucide="crown" class="w-4 h-4"></i>
+                        <span>Árbol Monumental del Perú</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-amber-300 font-semibold text-sm">
+                        <i data-lucide="sparkle" class="w-4 h-4"></i>
+                        <span>Símbolo Vivo de Conservación</span>
+                    </div>
+                    <h3 class="font-display text-3xl sm:text-4xl font-extrabold leading-tight">
+                        "El Abuelo": 51 metros de altura y más de 600 años
+                    </h3>
+                    <p class="text-stone-300 leading-relaxed text-sm sm:text-base">
+                        Con un diámetro de más de <strong>3.5 metros</strong> y una circunferencia de 11 metros, este titán centenario es uno de los árboles más impresionantes de Sudamérica. Se requieren más de 16 personas adultas tomadas de las manos para rodear su base.
+                    </p>
+
+                    <div class="bg-emerald-950/70 rounded-2xl p-5 border border-emerald-500/20 space-y-3">
+                        <div class="text-xs uppercase font-bold text-emerald-300 tracking-wider flex items-center justify-between">
+                            <span>Escala de 'El Abuelo'</span>
+                            <i data-lucide="ruler" class="w-4 h-4"></i>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3 text-center text-xs">
+                            <div class="bg-black/30 p-2.5 rounded-xl">
+                                <div class="text-amber-400 font-bold text-base">51 Metros</div>
+                                <div class="text-stone-400">Edificio de 17 pisos</div>
+                            </div>
+                            <div class="bg-black/30 p-2.5 rounded-xl">
+                                <div class="text-amber-400 font-bold text-base">3.5m Diámetro</div>
+                                <div class="text-stone-400">11m perímetro</div>
+                            </div>
+                            <div class="bg-black/30 p-2.5 rounded-xl">
+                                <div class="text-amber-400 font-bold text-base">+600 Años</div>
+                                <div class="text-stone-400">Época Prehispánica</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="openAIChat('Cuéntame todos los detalles sobre el Cedro Abuelo y cómo visitarlo en Pampa Hermosa')" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-stone-950 font-bold text-sm shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2">
+                            <i data-lucide="message-square" class="w-4 h-4"></i>
+                            <span>Preguntar al Guardaparque IA</span>
+                        </button>
+                        <a href="#galeria" class="px-6 py-3 rounded-xl bg-emerald-900/60 hover:bg-emerald-800 text-emerald-200 text-sm font-semibold border border-emerald-600/40 transition-colors flex items-center gap-2">
+                            <i data-lucide="image" class="w-4 h-4"></i>
+                            <span>Ver en Galería</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card rounded-3xl p-6 border border-stone-200 bg-white shadow-sm card-3d flex flex-col justify-between">
+                <div>
+                    <div class="h-48 rounded-2xl overflow-hidden mb-5 relative">
+                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=800&auto=format&fit=crop" 
+                             alt="Ulcumano Retrophyllum" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-emerald-900/80 backdrop-blur-md text-emerald-200 text-xs font-bold">
+                            Conífera Andina
+                        </span>
+                    </div>
+                    <h4 class="font-display text-xl font-bold text-stone-900 mb-1">El Ulcumano (*Retrophyllum*)</h4>
+                    <p class="text-xs font-semibold text-emerald-700 mb-3">La única conífera nativa de Sudamérica</p>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                        Árboles monumentales de hasta 40 metros de altura que proporcionan refugio a aves rapaces y captan agua de la neblina.
+                    </p>
+                </div>
+                <button onclick="openSpeciesModal('El Ulcumano', 'Retrophyllum rospigliosii', 'Conífera Nativa', 'Árbol majestuoso característico de los bosques montanos de la Selva Central. Posee follaje perenne denso que condensa la humedad ambiental.', 'Protegido por SERNANP contra la deforestación.')" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs flex items-center gap-1">
+                    <span>Ver ficha botánica</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 border border-stone-200 bg-white shadow-sm card-3d flex flex-col justify-between">
+                <div>
+                    <div class="h-48 rounded-2xl overflow-hidden mb-5 relative">
+                        <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=800&auto=format&fit=crop" 
+                             alt="Orquídeas silvestres Epidendrum" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-pink-900/80 backdrop-blur-md text-pink-200 text-xs font-bold">
+                            Orquídeas Silvestres
+                        </span>
+                    </div>
+                    <h4 class="font-display text-xl font-bold text-stone-900 mb-1">Orquídeas de Montaña</h4>
+                    <p class="text-xs font-semibold text-pink-700 mb-3">Jardines colgantes en los doseles</p>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                        Variedades epífitas como *Epidendrum* y *Masdevallia* que crecen sobre la corteza de los cedros, creando microhábitats para polinizadores.
+                    </p>
+                </div>
+                <button onclick="openSpeciesModal('Orquídeas Silvestres', 'Epidendrum / Masdevallia spp.', 'Flora Epífita', 'Crecen adheridas a los cedros gigantes sin parasitarlos, nutriéndose del aire húmedo y la neblina constante de Pampa Hermosa.', 'Prohibida su extracción o comercialización.')" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs flex items-center gap-1">
+                    <span>Ver ficha botánica</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 border border-stone-200 bg-white shadow-sm card-3d flex flex-col justify-between">
+                <div>
+                    <div class="h-48 rounded-2xl overflow-hidden mb-5 relative">
+                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800&auto=format&fit=crop" 
+                             alt="Helechos Arborescentes Cyathea" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-teal-900/80 backdrop-blur-md text-teal-200 text-xs font-bold">
+                            Fósiles Vivientes
+                        </span>
+                    </div>
+                    <h4 class="font-display text-xl font-bold text-stone-900 mb-1">Helechos Arborescentes</h4>
+                    <p class="text-xs font-semibold text-teal-700 mb-3">Estructuras prehistóricas (*Cyathea*)</p>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                        Especímenes de hasta 12 metros de altura que dan al santuario un aspecto jurásico y protegen las nacientes de quebradas y arroyos.
+                    </p>
+                </div>
+                <button onclick="openSpeciesModal('Helechos Arborescentes', 'Cyathea caracasana', 'Planta Ancestral', 'Linaje botánico que ha sobrevivido millones de años. Su tronco fibroso retiene agua como una esponja, evitando la pérdida de suelo.', 'Especie clave en la captación de agua.')" class="text-emerald-700 hover:text-emerald-800 font-bold text-xs flex items-center gap-1">
+                    <span>Ver ficha botánica</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planificador de Rutas y Checklist -->
+    <section id="planificador" class="py-24 bg-stone-100/60 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs uppercase font-extrabold tracking-widest text-emerald-700 bg-emerald-100 px-3.5 py-1.5 rounded-full">Guía Práctica & Rutas</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-stone-900 mt-4 mb-4">
+                    Cómo Llegar & Planificar tu Visita
+                </h2>
+                <p class="text-stone-600 text-base sm:text-lg">
+                    Toda la información logística precisa, tiempos de viaje, costos estimados y recomendaciones para una visita segura y memorable.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-start">
+                <div class="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8 bg-white border border-stone-200 shadow-sm space-y-6">
+                    <h3 class="font-display text-2xl font-bold text-stone-900 flex items-center gap-2">
+                        <i data-lucide="navigation" class="w-6 h-6 text-emerald-600"></i>
+                        <span>Calculador de Ruta</span>
+                    </h3>
+                    <p class="text-xs text-stone-500">Selecciona tu punto de origen para ver la ruta detallada y consejos de movilidad.</p>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">Punto de Partida</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="updateRoute('lima')" id="routeBtn-lima" class="route-selector-btn active p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1 transition-all bg-emerald-700 text-white border-emerald-700 shadow-sm">
+                                <i data-lucide="bus" class="w-4 h-4"></i>
+                                <span>Desde Lima</span>
+                            </button>
+                            <button onclick="updateRoute('sanramon')" id="routeBtn-sanramon" class="route-selector-btn p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1 transition-all bg-stone-50 text-stone-700 border-stone-200 hover:bg-emerald-50">
+                                <i data-lucide="car" class="w-4 h-4"></i>
+                                <span>Desde San Ramón</span>
+                            </button>
+                            <button onclick="updateRoute('tarma')" id="routeBtn-tarma" class="route-selector-btn p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1 transition-all bg-stone-50 text-stone-700 border-stone-200 hover:bg-emerald-50">
+                                <i data-lucide="mountain" class="w-4 h-4"></i>
+                                <span>Desde Tarma</span>
+                            </button>
+                            <button onclick="updateRoute('huancayo')" id="routeBtn-huancayo" class="route-selector-btn p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1 transition-all bg-stone-50 text-stone-700 border-stone-200 hover:bg-emerald-50">
+                                <i data-lucide="compass" class="w-4 h-4"></i>
+                                <span>Desde Huancayo</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="routeInfoBox" class="bg-stone-50 rounded-2xl p-5 border border-stone-200/80 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-emerald-800 uppercase tracking-wide">Tiempo Total Estimado</span>
+                            <span id="routeTime" class="text-lg font-extrabold text-emerald-700 font-display">~ 7.5 Horas</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <div class="bg-white p-2.5 rounded-xl border border-stone-100">
+                                <span class="text-stone-400 block">Distancia</span>
+                                <span id="routeDistance" class="font-bold text-stone-800 text-sm">330 km</span>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-xl border border-stone-100">
+                                <span class="text-stone-400 block">Presupuesto Bus/Combi</span>
+                                <span id="routeCost" class="font-bold text-stone-800 text-sm">S/ 60 - S/ 90</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-stone-700 block mb-1">Tipo de Vehículo Recomendado</span>
+                            <span id="routeVehicle" class="text-xs text-stone-600">Bus interprovincial hasta San Ramón, luego camioneta 4x4 o auto alto para los 24 km de trocha.</span>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.google.com/?q=Santuario+Nacional+Pampa+Hermosa" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-2xl bg-emerald-100 hover:bg-emerald-200 text-emerald-900 font-bold text-xs flex items-center justify-center gap-2 transition-colors">
+                        <i data-lucide="map-pinned" class="w-4 h-4"></i>
+                        <span>Abrir ubicación en Google Maps</span>
+                    </a>
+                </div>
+
+                <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 bg-white border border-stone-200 shadow-sm">
+                    <h3 class="font-display text-2xl font-bold text-stone-900 mb-6 flex items-center gap-2">
+                        <i data-lucide="milestone" class="w-6 h-6 text-emerald-600"></i>
+                        <span>Itinerario Detallado Paso a Paso</span>
+                    </h3>
+
+                    <div id="routeStepsList" class="space-y-6 relative before:absolute before:left-4 before:top-3 before:bottom-3 before:w-0.5 before:bg-emerald-200">
+                        <div class="relative pl-10">
+                            <div class="absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-600 ring-4 ring-emerald-100"></div>
+                            <div class="font-bold text-stone-900 text-sm">Paso 1: Lima &rarr; La Oroya &rarr; San Ramón (Chanchamayo)</div>
+                            <p class="text-xs text-stone-600 mt-1">
+                                Salida por la Carretera Central cruzando Ticlio (4,818 msnm) y bajando por el valle de Tarma hasta la Selva Central (San Ramón). Viaje en bus de 6 a 7 horas.
+                            </p>
+                        </div>
+
+                        <div class="relative pl-10">
+                            <div class="absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-600 ring-4 ring-emerald-100"></div>
+                            <div class="font-bold text-stone-900 text-sm">Paso 2: San Ramón &rarr; Anexo Nueva Italia / Sector Cascas</div>
+                            <p class="text-xs text-stone-600 mt-1">
+                                Desde el centro de San Ramón se toma transporte local (camioneta rural o taxi colectivo 4x4) por una trocha carrozable de 24 km a lo largo del río Ulcumayo (aprox. 1 hora).
+                            </p>
+                        </div>
+
+                        <div class="relative pl-10">
+                            <div class="absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-600 ring-4 ring-emerald-100"></div>
+                            <div class="font-bold text-stone-900 text-sm">Paso 3: Registro en Puesto de Control SERNANP</div>
+                            <p class="text-xs text-stone-600 mt-1">
+                                Registro obligatorio de visitantes, pago de tarifa de ingreso oficial y asignación de guía local certificado de bajo impacto ecológico.
+                            </p>
+                        </div>
+
+                        <div class="relative pl-10">
+                            <div class="absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-600 ring-4 ring-emerald-100"></div>
+                            <div class="font-bold text-stone-900 text-sm">Paso 4: Trekking por el Sendero "Los Cedros Gigantes"</div>
+                            <p class="text-xs text-stone-600 mt-1">
+                                Caminata de dificultad moderada (2 a 3 horas) atravesando el bosque de neblina, cruzando puentes rústicos hasta llegar a los pies del imponente <strong>Cedro Abuelo</strong> y las cascadas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checklist de Equipaje -->
+            <div id="checklist" class="glass-card rounded-3xl p-6 sm:p-10 bg-white border border-stone-200 shadow-sm mb-16">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                    <div>
+                        <span class="text-xs uppercase font-extrabold tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">Herramienta Interactiva</span>
+                        <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-stone-900 mt-2">
+                            Checklist de Mochila para Pampa Hermosa
+                        </h3>
+                        <p class="text-xs sm:text-sm text-stone-500">Marca los elementos que ya tienes listos para calcular tu nivel de preparación.</p>
+                    </div>
+
+                    <div class="bg-stone-50 rounded-2xl p-4 border border-stone-200 min-w-[240px]">
+                        <div class="flex justify-between items-center text-xs font-bold mb-1">
+                            <span class="text-stone-700">Mochila lista:</span>
+                            <span id="checklistScore" class="text-emerald-700">0%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-stone-200 rounded-full overflow-hidden">
+                            <div id="checklistBar" class="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs sm:text-sm" id="checklistItems">
+                    <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-stone-50 hover:bg-emerald-50/50 border border-stone-200 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistProgress()" class="mt-0.5 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                        <div>
+                            <span class="font-bold text-stone-900 block">Zapatillas o botas de trekking</span>
+                            <span class="text-stone-500 text-xs">Con buen agarre antideslizante para barro y piedras húmedas.</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-stone-50 hover:bg-emerald-50/50 border border-stone-200 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistProgress()" class="mt-0.5 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                        <div>
+                            <span class="font-bold text-stone-900 block">Casaca impermeable / Poncho de lluvia</span>
+                            <span class="text-stone-500 text-xs">La neblina y llovizna son frecuentes en el bosque montano.</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-stone-50 hover:bg-emerald-50/50 border border-stone-200 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistProgress()" class="mt-0.5 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                        <div>
+                            <span class="font-bold text-stone-900 block">Repelente ecológico & Bloqueador</span>
+                            <span class="text-stone-500 text-xs">Protege tu piel sin dañar a los polinizadores ni el agua pura.</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-stone-50 hover:bg-emerald-50/50 border border-stone-200 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistProgress()" class="mt-0.5 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                        <div>
+                            <span class="font-bold text-stone-900 block">Cantimplora reutilizable</span>
+                            <span class="text-stone-500 text-xs">Estrictamente prohibidos los plásticos de un solo uso por SERNANP.</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-stone-50 hover:bg-emerald-50/50 border border-stone-200 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistProgress()" class="mt-0.5 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                        <div>
+                            <span class="font-bold text-stone-900 block">Bolsa para tus residuos</span>
+                            <span class="text-stone-500 text-xs">Todo lo que ingresa contigo debe regresar contigo (Basura Cero).</span>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-stone-50 hover:bg-emerald-50/50 border border-stone-200 cursor-pointer transition-colors">
+                        <input type="checkbox" onchange="updateChecklistProgress()" class="mt-0.5 w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500">
+                        <div>
+                            <span class="font-bold text-stone-900 block">Binoculares & Cámara fotográfica</span>
+                            <span class="text-stone-500 text-xs">Indispensables para avistar el gallito de las rocas y aves del dosel.</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería con Lightbox -->
+    <section id="galeria" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-xs uppercase font-extrabold tracking-widest text-emerald-700 bg-emerald-100 px-3.5 py-1.5 rounded-full">Experiencia Visual</span>
+            <h2 class="font-display text-3xl sm:text-5xl font-extrabold text-stone-900 mt-4 mb-4">
+                Galería de Paisajes y Biodiversidad
+            </h2>
+            <p class="text-stone-600 text-base sm:text-lg">
+                Haz clic en cualquier fotografía para abrirla en alta resolución con datos de ubicación e información fotográfica.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="group relative h-64 rounded-3xl overflow-hidden cursor-pointer shadow-md" 
+                 onclick="openLightbox('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=1600&auto=format&fit=crop', 'El Cedro Abuelo Centenario', 'Santuario Nacional Pampa Hermosa - Sector San Antonio', 'Tronco colosal de más de 3.5 metros de diámetro con excursionistas admirando su escala.')">
+                <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=800&auto=format&fit=crop" alt="El Cedro Abuelo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end text-white">
+                    <span class="text-xs font-bold text-amber-300">Cedro Monumental</span>
+                    <h5 class="font-display font-bold text-sm">El Abuelo (51 metros)</h5>
+                </div>
+            </div>
+
+            <div class="group relative h-64 rounded-3xl overflow-hidden cursor-pointer shadow-md" 
+                 onclick="openLightbox('https://images.unsplash.com/photo-1552728089-57bdde30beb3?q=80&w=1600&auto=format&fit=crop', 'Macho de Gallito de las Rocas', 'Quebradas del Río Cascas', 'Espécimen macho luciendo su cresta escarlata en la neblina matutina.')">
+                <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?q=80&w=800&auto=format&fit=crop" alt="Gallito de las Rocas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end text-white">
+                    <span class="text-xs font-bold text-emerald-300">Ave Nacional</span>
+                    <h5 class="font-display font-bold text-sm">Rupicola peruvianus</h5>
+                </div>
+            </div>
+
+            <div class="group relative h-64 rounded-3xl overflow-hidden cursor-pointer shadow-md" 
+                 onclick="openLightbox('https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=1600&auto=format&fit=crop', 'Neblina en la Selva Central', 'Cordillera de Pampa Hermosa', 'Manto de niebla cubriendo los cerros esmeralda al amanecer.')">
+                <img src="https://images.unsplash.com/photo-1511497584788-87676104235f?q=80&w=800&auto=format&fit=crop" alt="Bosque Nuboso" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end text-white">
+                    <span class="text-xs font-bold text-teal-300">Paisaje Andino-Amazónico</span>
+                    <h5 class="font-display font-bold text-sm">Mares de Neblina</h5>
+                </div>
+            </div>
+
+            <div class="group relative h-64 rounded-3xl overflow-hidden cursor-pointer shadow-md" 
+                 onclick="openLightbox('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?q=80&w=1600&auto=format&fit=crop', 'Catarata Cristalina en la Selva', 'Sendero de Cascadas', 'Aguas puras que brotan de las cabeceras de cuenca del santuario.')">
+                <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?q=80&w=800&auto=format&fit=crop" alt="Cascada en Pampa Hermosa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end text-white">
+                    <span class="text-xs font-bold text-blue-300">Ríos Vivos</span>
+                    <h5 class="font-display font-bold text-sm">Cascada Gallito de las Rocas</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante y Chatbot IA -->
+    <div id="aiChatTrigger" class="fixed bottom-6 right-6 z-50">
+        <button onclick="toggleAIChat()" class="relative flex items-center gap-3 px-5 py-3.5 rounded-full bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white font-bold shadow-2xl hover:scale-105 transition-all duration-300 border border-emerald-300/40">
+            <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-200"></span>
+            </span>
+            <div class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
+                <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+            </div>
+            <span class="text-xs sm:text-sm tracking-wide">Guía IA Pampa Hermosa</span>
+        </button>
+    </div>
+
+    <!-- Modal Chatbot IA -->
+    <div id="aiChatModal" class="fixed bottom-6 right-6 z-50 w-[92vw] sm:w-[400px] max-h-[620px] h-[85vh] bg-jungle-dark text-white rounded-3xl shadow-2xl border border-emerald-500/30 flex flex-col overflow-hidden hidden">
+        <div class="p-4 bg-emerald-950 border-b border-emerald-800/60 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-0.5 shadow-md">
+                    <div class="w-full h-full bg-jungle-dark rounded-[14px] flex items-center justify-center text-emerald-400">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-display font-bold text-sm text-white">Kusi &bull; Guardaparque IA</h4>
+                    <p class="text-[11px] text-emerald-300 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Asistente Virtual en Vivo
+                    </p>
+                </div>
+            </div>
+            <button onclick="toggleAIChat()" class="p-1.5 text-stone-400 hover:text-white rounded-lg">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs sm:text-sm bg-gradient-to-b from-jungle-dark via-jungle-dark/95 to-black/50">
+            <div class="flex items-start gap-2.5">
+                <div class="w-7 h-7 rounded-xl bg-emerald-600 flex items-center justify-center shrink-0 text-white text-xs font-bold">🌿</div>
+                <div class="p-3.5 rounded-2xl bg-emerald-950/80 border border-emerald-500/20 text-stone-200 leading-relaxed max-w-[85%]">
+                    ¡Allillanchu! Soy <strong>Kusi</strong>, tu guardaparque y guía de <strong>Pampa Hermosa</strong>. ¿En qué puedo orientarte hoy? Pregúntame sobre el Cedro Abuelo, cómo llegar desde Lima o San Ramón, fauna o qué empacar.
+                </div>
+            </div>
+        </div>
+
+        <div class="px-3 py-2 bg-emerald-950/60 border-t border-emerald-900/60 overflow-x-auto whitespace-nowrap flex gap-1.5 text-[11px]">
+            <button onclick="sendQuickPrompt('¿Cómo llego desde San Ramón y cuánto demora?')" class="px-3 py-1.5 rounded-full bg-emerald-900/50 hover:bg-emerald-800 text-emerald-200 border border-emerald-500/20">🚗 ¿Cómo llegar?</button>
+            <button onclick="sendQuickPrompt('¿Cuánto mide el Cedro Abuelo y cuántos años tiene?')" class="px-3 py-1.5 rounded-full bg-emerald-900/50 hover:bg-emerald-800 text-emerald-200 border border-emerald-500/20">🌳 El Cedro Abuelo</button>
+            <button onclick="sendQuickPrompt('¿Cuál es la mejor época para viajar a Pampa Hermosa?')" class="px-3 py-1.5 rounded-full bg-emerald-900/50 hover:bg-emerald-800 text-emerald-200 border border-emerald-500/20">☀️ Mejor temporada</button>
+        </div>
+
+        <form onsubmit="handleChatSubmit(event)" class="p-3 bg-emerald-950 border-t border-emerald-800/80 flex items-center gap-2">
+            <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." class="flex-1 px-4 py-2.5 rounded-xl bg-jungle-dark border border-emerald-500/30 text-white placeholder-stone-400 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-400">
+            <button type="submit" class="p-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-jungle-dark font-bold shrink-0">
+                <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+        </form>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 hidden">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <div class="max-w-4xl w-full text-white space-y-4">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 max-h-[70vh] flex items-center justify-center bg-black">
+                <img id="lightboxImg" src="" alt="Vista previa" class="w-full h-auto max-h-[70vh] object-contain">
+            </div>
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                <div>
+                    <h4 id="lightboxTitle" class="font-display text-lg font-bold text-emerald-400">Título</h4>
+                    <p id="lightboxLocation" class="text-stone-300">Ubicación</p>
+                </div>
+                <p id="lightboxDesc" class="text-stone-400 max-w-md text-right sm:text-left">Detalle</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Lógica -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            updateChecklistProgress();
+        });
+
+        // 1. Audio Procedural de Selva
+        let audioCtx = null, isSoundPlaying = false, soundNodes = [];
+        function toggleRainforestSound() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const soundWaves = document.getElementById('soundWaves');
+            const soundText = document.getElementById('soundText');
+            if (!isSoundPlaying) {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const bufferSize = audioCtx.sampleRate * 2;
+                const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
+                let lastOut = 0.0;
+                for (let i = 0; i < bufferSize; i++) {
+                    let white = Math.random() * 2 - 1;
+                    output[i] = (lastOut + (0.02 * white)) / 1.02;
+                    lastOut = output[i];
+                    output[i] *= 3.5;
+                }
+                const whiteNoise = audioCtx.createBufferSource();
+                whiteNoise.buffer = noiseBuffer;
+                whiteNoise.loop = true;
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(450, audioCtx.currentTime);
+                const gainNode = audioCtx.createGain();
+                gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                whiteNoise.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                whiteNoise.start();
+                soundNodes.push(whiteNoise, gainNode);
+                isSoundPlaying = true;
+                if (soundWaves) { soundWaves.classList.remove('hidden'); soundWaves.classList.add('flex'); }
+                if (soundText) soundText.innerText = "Sonando";
+            } else {
+                soundNodes.forEach(node => { if (node.stop) node.stop(); if (node.disconnect) node.disconnect(); });
+                soundNodes = [];
+                isSoundPlaying = false;
+                if (soundWaves) { soundWaves.classList.add('hidden'); soundWaves.classList.remove('flex'); }
+                if (soundText) soundText.innerText = "Audio Selva";
+            }
+        }
+
+        // 2. Modo Neblina
+        let isMistActive = false;
+        function toggleMist() {
+            const mist = document.getElementById('mistEffect');
+            isMistActive = !isMistActive;
+            if (mist) mist.style.opacity = isMistActive ? '1' : '0';
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // 3. Calculador de Rutas
+        const routeData = {
+            lima: {
+                time: '~ 7.5 Horas', distance: '330 km', cost: 'S/ 60 - S/ 95',
+                vehicle: 'Bus interprovincial hasta San Ramón, luego camioneta 4x4 hacia Nueva Italia.',
+                steps: [
+                    { title: 'Paso 1: Lima → San Ramón', desc: 'Salida de terminales por la Carretera Central vía Tarma (6 - 7 hrs).' },
+                    { title: 'Paso 2: San Ramón → Nueva Italia', desc: 'Camioneta rural o taxi local por trocha (24 km, aprox. 1 hr).' },
+                    { title: 'Paso 3: Puesto SERNANP', desc: 'Registro obligatorio y asignación de guía local certificado.' },
+                    { title: 'Paso 4: Trekking al Cedro Abuelo', desc: 'Caminata de 2 a 3 horas en bosque nuboso.' }
+                ]
+            },
+            sanramon: {
+                time: '~ 1.5 Horas', distance: '24 km', cost: 'S/ 15 - S/ 25',
+                vehicle: 'Camioneta 4x4 o colectivo hacia el puente de acceso.',
+                steps: [
+                    { title: 'Paso 1: San Ramón Centro', desc: 'Abastecimiento y contacto con guías locales autorizados.' },
+                    { title: 'Paso 2: Ruta a Puente Victoria y Cascas', desc: 'Trocha carrozable de 24 km a lo largo del río Ulcumayo.' },
+                    { title: 'Paso 3: Entrada al Santuario', desc: 'Inicio del sendero oficial.' }
+                ]
+            },
+            tarma: {
+                time: '~ 3.0 Horas', distance: '85 km', cost: 'S/ 25 - S/ 40',
+                vehicle: 'Colectivo Tarma - San Ramón, luego 4x4 a Pampa Hermosa.',
+                steps: [
+                    { title: 'Paso 1: Tarma → San Ramón', desc: 'Descenso panorámico de la sierra a la selva.' },
+                    { title: 'Paso 2: San Ramón → Santuario', desc: 'Conexión hacia Nueva Italia.' }
+                ]
+            },
+            huancayo: {
+                time: '~ 5.5 Horas', distance: '210 km', cost: 'S/ 40 - S/ 65',
+                vehicle: 'Bus Huancayo - Jauja - Tarma - San Ramón.',
+                steps: [
+                    { title: 'Paso 1: Valle del Mantaro → Tarma', desc: 'Ruta asfaltada hacia Tarma.' },
+                    { title: 'Paso 2: Tarma → San Ramón → Santuario', desc: 'Acceso a la Selva Central.' }
+                ]
+            }
+        };
+
+        function updateRoute(origin) {
+            document.querySelectorAll('.route-selector-btn').forEach(b => {
+                b.classList.remove('bg-emerald-700', 'text-white', 'border-emerald-700');
+                b.classList.add('bg-stone-50', 'text-stone-700', 'border-stone-200');
+            });
+            const activeBtn = document.getElementById('routeBtn-' + origin);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-stone-50', 'text-stone-700', 'border-stone-200');
+                activeBtn.classList.add('bg-emerald-700', 'text-white', 'border-emerald-700');
+            }
+            const data = routeData[origin];
+            document.getElementById('routeTime').innerText = data.time;
+            document.getElementById('routeDistance').innerText = data.distance;
+            document.getElementById('routeCost').innerText = data.cost;
+            document.getElementById('routeVehicle').innerText = data.vehicle;
+            const list = document.getElementById('routeStepsList');
+            list.innerHTML = '';
+            data.steps.forEach(s => {
+                list.innerHTML += `
+                    <div class="relative pl-10">
+                        <div class="absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-600 ring-4 ring-emerald-100"></div>
+                        <div class="font-bold text-stone-900 text-sm">${s.title}</div>
+                        <p class="text-xs text-stone-600 mt-1">${s.desc}</p>
+                    </div>`;
+            });
+        }
+
+        // 4. Checklist Progress
+        function updateChecklistProgress() {
+            const checkboxes = document.querySelectorAll('#checklistItems input[type="checkbox"]');
+            let checked = 0;
+            checkboxes.forEach(cb => { if (cb.checked) checked++; });
+            const pct = Math.round((checked / checkboxes.length) * 100);
+            document.getElementById('checklistScore').innerText = pct + '%';
+            document.getElementById('checklistBar').style.width = pct + '%';
+        }
+
+        // 5. Lightbox
+        function openLightbox(src, title, location, desc) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxTitle').innerText = title;
+            document.getElementById('lightboxLocation').innerText = location;
+            document.getElementById('lightboxDesc').innerText = desc;
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // 6. Chatbot IA Kusi
+        function toggleAIChat() {
+            document.getElementById('aiChatModal').classList.toggle('hidden');
+            lucide.createIcons();
+        }
+        function openAIChat(prompt = '') {
+            document.getElementById('aiChatModal').classList.remove('hidden');
+            lucide.createIcons();
+            if (prompt) sendQuickPrompt(prompt);
+        }
+        function sendQuickPrompt(txt) {
+            document.getElementById('chatInput').value = txt;
+            handleChatSubmit(new Event('submit'));
+        }
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const userMsg = input.value.trim();
+            if (!userMsg) return;
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML += `
+                <div class="flex items-start justify-end gap-2.5">
+                    <div class="p-3 rounded-2xl bg-emerald-600 text-white leading-relaxed max-w-[85%] text-xs">${userMsg}</div>
+                    <div class="w-6 h-6 rounded-lg bg-emerald-700 text-white text-[10px] font-bold flex items-center justify-center shrink-0">Tú</div>
+                </div>`;
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const aiResponse = generateKusiResponse(userMsg);
+                chatMessages.innerHTML += `
+                    <div class="flex items-start gap-2.5">
+                        <div class="w-7 h-7 rounded-xl bg-emerald-600 flex items-center justify-center shrink-0 text-white text-xs font-bold">🌿</div>
+                        <div class="p-3.5 rounded-2xl bg-emerald-950/80 border border-emerald-500/20 text-stone-200 leading-relaxed max-w-[85%] text-xs">${aiResponse}</div>
+                    </div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 500);
+        }
+
+        function generateKusiResponse(q) {
+            const query = q.toLowerCase();
+            if (query.includes('llegar') || query.includes('ruta') || query.includes('transporte') || query.includes('bus')) {
+                return "🚗 <strong>Ruta hacia Pampa Hermosa:</strong><br>1. Desde Lima a <strong>San Ramón (Chanchamayo)</strong> en bus vía Tarma (6-7 hrs).<br>2. En San Ramón tomas una camioneta 4x4 hacia <strong>Nueva Italia / Sector Cascas</strong> (24 km de trocha, 1 hr).<br>3. Registro en SERNANP y caminata hacia los cedros.";
+            }
+            if (query.includes('cedro') || query.includes('abuelo') || query.includes('altura') || query.includes('años')) {
+                return "🌳 <strong>El Cedro Abuelo:</strong><br>Mide <strong>51 metros de alto</strong>, tiene <strong>3.5 metros de diámetro</strong> y más de <strong>600 años de antigüedad</strong> (*Cedrela lilloi*). Se necesitan 16 adultos tomados de las manos para rodearlo.";
+            }
+            if (query.includes('temporada') || query.includes('clima') || query.includes('mes') || query.includes('lluvia')) {
+                return "☀️ <strong>Mejor Época:</strong><br>De <strong>Abril a Octubre</strong> (temporada seca), ideal para trekking, fotografía y caminos despejados.";
+            }
+            return "🌿 <strong>Consejo de Kusi:</strong><br>Pampa Hermosa es una reserva de biosfera única. Ingresa con guía certificado, no dejes residuos y disfruta del silencio del bosque de neblina.";
+        }
+    </script>
+</body>
+</html>
