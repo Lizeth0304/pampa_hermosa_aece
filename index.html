@@ -3,186 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santuario Nacional Pampa Hermosa | Guía Interactiva</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Pampa Hermosa | Guía Interactiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- BARRA DE PROGRESO DE SCROLL -->
-    <div class="scroll-progress" id="scroll-progress"></div>
-
-    <!-- NAVEGACIÓN -->
-    <nav id="navbar">
-        <div class="logo">
-            <i class="fas fa-leaf"></i> Pampa Hermosa
+    <!-- Navegación Minimalista -->
+    <nav class="glass-nav">
+        <div class="nav-brand"><i class="fas fa-leaf text-accent"></i> Pampa Hermosa</div>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#descubre">Descubre</a>
+            <a href="#biodiversidad">Biodiversidad</a>
+            <a href="#galeria">Galería</a>
         </div>
-        <ul class="nav-links">
-            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
-            <li><a href="#guia"><i class="fas fa-map-signs"></i> Guía Práctica</a></li>
-            <li><a href="#biodiversidad"><i class="fas fa-paw"></i> Especies</a></li>
-            <li><a href="#galeria"><i class="fas fa-images"></i> Galería</a></li>
-            <li><a href="#comunidad"><i class="fas fa-comments"></i> Comunidad</a></li>
-        </ul>
     </nav>
 
-    <!-- CABECERA INMERSIVA CON ANIMACIÓN DE HOJAS -->
-    <header class="hero" id="inicio">
-        <!-- Partículas de hojas creadas por CSS -->
-        <div class="leaves" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg">
+            <!-- URL Directa sin proxy -->
+            <img src="https://cdn.gamma.app/fg5b30rizng5zj0/3f0af95757cf499c9e8331e01f9d0d84/original/dos-cataras-flanquean.jpg" alt="Fondo Santuario">
+            <div class="hero-overlay"></div>
         </div>
-        <div class="hero-content">
-            <span class="badge">Santuario Nacional</span>
-            <h1>El Corazón Esmeralda de los Andes</h1>
-            <p>Descubre el último refugio de cedros milenarios y vida silvestre intacta. Una experiencia mágica en la Selva Central.</p>
-            <a href="#guia" class="btn-glow">Comenzar Aventura <i class="fas fa-arrow-right"></i></a>
+        <div class="hero-content fade-up">
+            <div class="pill-badge"><i class="fas fa-sparkles"></i> Santuario Nacional</div>
+            <h1>El corazón esmeralda<br>de los <span class="text-gradient">Andes</span></h1>
+            <p>Un refugio vivo donde la neblina abraza a los cedros ancestrales. Tu aventura en la Selva Central comienza aquí.</p>
+            <a href="#descubre" class="btn-primary">Explorar <i class="fas fa-arrow-right"></i></a>
         </div>
-    </header>
+    </section>
 
-    <!-- GUÍA PRÁCTICA (DIBUJITOS E INFO) -->
-    <section id="guia" class="section-guide">
-        <h2 class="title"><i class="fas fa-compass"></i> Guía para tu Viaje</h2>
-        <p class="subtitle">Todo lo que necesitas saber antes de empacar tu mochila.</p>
+    <!-- Bento Grid: Info Principal -->
+    <section id="descubre" class="container section-padding">
+        <div class="section-header fade-up">
+            <h2>Lo que lo hace <span class="text-gradient">único</span></h2>
+        </div>
         
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="icon-box"><i class="fas fa-route"></i></div>
-                <h3>¿Cómo llegar?</h3>
-                <p>La ruta principal es por <b>San Ramón</b> (Chanchamayo). Desde allí, un viaje fascinante hacia las montañas te adentrará en el bosque de neblina.</p>
+        <div class="bento-grid">
+            <!-- Tarjeta 1 -->
+            <div class="bento-item span-2 fade-up">
+                <div class="bento-icon"><i class="fas fa-map-pin"></i></div>
+                <h3>Ubicación Estratégica</h3>
+                <p>Accesible desde San Ramón, este santuario es el nexo perfecto entre las altas montañas y la selva exuberante de Junín.</p>
             </div>
-            <div class="step-card">
-                <div class="icon-box"><i class="fas fa-backpack"></i></div>
-                <h3>¿Qué llevar?</h3>
-                <p>Ropa ligera pero abrigadora para la tarde, repelente, botas de trekking y cámara fotográfica. ¡La humedad es alta!</p>
+            
+            <!-- Tarjeta 2 (El Abuelo) -->
+            <div class="bento-item bento-image span-row-2 fade-up" style="transition-delay: 0.1s;">
+                <img src="https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/812FRIcgoLA5Hr2NkP2Lw.jpg" alt="El Abuelo Cedro">
+                <div class="image-content">
+                    <h3>El Abuelo</h3>
+                    <p>Cedro gigante de 51 metros.</p>
+                </div>
             </div>
-            <div class="step-card">
-                <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
-                <h3>Reglas de Oro</h3>
-                <p>Respeta el silencio del bosque, no dejes basura y mantén distancia de la fauna silvestre. ¡Somos sus invitados!</p>
+
+            <!-- Tarjeta 3 -->
+            <div class="bento-item fade-up" style="transition-delay: 0.2s;">
+                <div class="bento-icon"><i class="fas fa-globe"></i></div>
+                <h3>UNESCO</h3>
+                <p>Reconocido como reserva de biosfera global.</p>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="bento-item fade-up" style="transition-delay: 0.3s;">
+                <div class="bento-icon"><i class="fas fa-droplet"></i></div>
+                <h3>Cuna de Agua</h3>
+                <p>Alimenta los ríos Cascas y Ulcumayo vitales para el valle.</p>
             </div>
         </div>
     </section>
 
-    <!-- BIODIVERSIDAD (IMÁGENES REALES DE GAMMA) -->
-    <section id="biodiversidad" class="section-bio">
-        <h2 class="title"><i class="fas fa-binoculars"></i> Guardianes del Bosque</h2>
-        <p class="subtitle">Conoce a los habitantes únicos de Pampa Hermosa</p>
-        
-        <div class="bio-grid">
-            <!-- Oso de Anteojos (Imagen real) -->
-            <div class="bio-card tilt-card">
-                <div class="card-img">
-                    <img src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/height:400/https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/02sO8sXFQ_GaLfrbH4Otp.jpg" alt="Oso de Anteojos">
-                    <span class="tag alert">En Peligro</span>
-                </div>
-                <div class="card-content">
-                    <h3>Oso de Anteojos</h3>
-                    <p>El único oso de América del Sur. Se oculta entre la neblina andina buscando bromelias y frutos. Es el gran jardinero del bosque.</p>
+    <!-- Especies -->
+    <section id="biodiversidad" class="container section-padding">
+        <div class="section-header fade-up">
+            <h2>Guardianes del <span class="text-gradient">Bosque</span></h2>
+        </div>
+
+        <div class="species-grid">
+            <div class="species-card fade-up">
+                <img src="https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/02sO8sXFQ_GaLfrbH4Otp.jpg" alt="Oso de Anteojos">
+                <div class="species-info">
+                    <span class="tag danger">En Peligro</span>
+                    <h4>Oso de Anteojos</h4>
                 </div>
             </div>
 
-            <!-- Gallito de las Rocas (Imagen real) -->
-            <div class="bio-card tilt-card">
-                <div class="card-img">
-                    <img src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/height:400/https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/ueDr9lKIrnYIflqZ8AKop.jpg" alt="Gallito de las Rocas">
-                    <span class="tag">Ave Nacional</span>
-                </div>
-                <div class="card-content">
-                    <h3>Gallito de las Rocas</h3>
-                    <p>Famoso por su plumaje rojo vibrante y su fascinante danza de cortejo entre las rocas y cascadas del santuario.</p>
+            <div class="species-card fade-up" style="transition-delay: 0.1s;">
+                <img src="https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/ueDr9lKIrnYIflqZ8AKop.jpg" alt="Gallito de las Rocas">
+                <div class="species-info">
+                    <span class="tag accent">Ave Nacional</span>
+                    <h4>Gallito de las Rocas</h4>
                 </div>
             </div>
 
-            <!-- Mono Choro (Imagen real) -->
-            <div class="bio-card tilt-card">
-                <div class="card-img">
-                    <img src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/height:400/https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/z77iDLo4YM7tBkQczWaCZ.jpg" alt="Mono Choro">
-                    <span class="tag alert">Endémico</span>
-                </div>
-                <div class="card-content">
-                    <h3>Mono Choro de Cola Amarilla</h3>
-                    <p>Un primate endémico de Perú. Se balancea ágilmente por el dosel del bosque gracias a su cola prensil.</p>
-                </div>
-            </div>
-
-            <!-- El Abuelo / Cedro (Imagen real) -->
-            <div class="bio-card tilt-card">
-                <div class="card-img">
-                    <img src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/height:400/https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/812FRIcgoLA5Hr2NkP2Lw.jpg" alt="Cedro El Abuelo">
-                    <span class="tag forest">Gigante Ancestral</span>
-                </div>
-                <div class="card-content">
-                    <h3>El Abuelo (Cedro)</h3>
-                    <p>Testigo del tiempo. Con más de 50 metros de altura, es el corazón de este ecosistema y símbolo de conservación.</p>
+            <div class="species-card fade-up" style="transition-delay: 0.2s;">
+                <img src="https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/z77iDLo4YM7tBkQczWaCZ.jpg" alt="Mono Choro">
+                <div class="species-info">
+                    <span class="tag danger">Endémico</span>
+                    <h4>Mono Choro</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- GALERÍA INTERACTIVA -->
-    <section id="galeria" class="section-gallery">
-        <h2 class="title"><i class="fas fa-camera"></i> Rincones Escondidos</h2>
-        <div class="masonry-gallery">
-            <div class="gallery-item"><img src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/height:400/https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/j8HrOgH64qqmAjzbEXQ61.jpg" alt="Mariposas"></div>
-            <div class="gallery-item"><img src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/height:400/https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/6_e8CbLfllZ9rbA_6TzFj.jpg" alt="Ríos"></div>
-            <div class="gallery-item"><img src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/height:400/https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/auVe1KrMIOBFqCW2kLp5i.jpg" alt="Bosque de neblina"></div>
-            <div class="gallery-item"><img src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/height:400/https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/ztB39re6tJhdcmiXVeExA.jpg" alt="Paisaje de altura"></div>
+    <!-- Galería y Comunidad -->
+    <section id="galeria" class="container section-padding">
+        <div class="section-header fade-up">
+            <h2>Paisajes <span class="text-gradient">Intactos</span></h2>
+        </div>
+        <div class="gallery-grid">
+            <img src="https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/j8HrOgH64qqmAjzbEXQ61.jpg" class="fade-up" alt="Galería 1">
+            <img src="https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/6_e8CbLfllZ9rbA_6TzFj.jpg" class="fade-up" alt="Galería 2" style="transition-delay: 0.1s;">
+            <img src="https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/auVe1KrMIOBFqCW2kLp5i.jpg" class="fade-up" alt="Galería 3" style="transition-delay: 0.2s;">
+            <img src="https://cdn.gamma.app/fg5b30rizng5zj0/uploaded-images/ztB39re6tJhdcmiXVeExA.jpg" class="fade-up" alt="Galería 4" style="transition-delay: 0.3s;">
         </div>
     </section>
 
-    <!-- COMUNIDAD Y FEEDBACK -->
-    <section id="comunidad" class="section-community">
-        <div class="community-box">
-            <div class="community-text">
-                <h2>Tu voz es importante</h2>
-                <p>¿Tienes dudas sobre la ruta? ¿Ya visitaste Pampa Hermosa? Deja tus comentarios, sugerencias o preguntas para ayudar a otros viajeros.</p>
-                <img src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png" alt="Buzón" width="120">
-            </div>
-            <div class="community-form">
-                <form id="feedbackForm">
-                    <input type="text" placeholder="Tu nombre y de dónde nos visitas" required>
-                    <textarea rows="4" placeholder="Escribe tu opinión, sugerencia o duda aquí..." required></textarea>
-                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar Mensaje</button>
-                </form>
-                <div id="successMsg" class="hidden">
-                    <i class="fas fa-check-circle"></i> ¡Mensaje recibido! Gracias por ser parte de la comunidad.
-                </div>
-            </div>
+    <footer class="footer">
+        <div class="container">
+            <p>Diseñado por Cris. Protegiendo Pampa Hermosa para el futuro.</p>
         </div>
-    </section>
+    </footer>
 
-    <!-- ASISTENTE IA INNOVADOR (SMART WIDGET) -->
-    <div class="ai-widget">
-        <button class="ai-trigger" id="aiBtn">
-            <div class="ai-avatar">
-                <img src="https://cdn-icons-png.flaticon.com/512/8943/8943377.png" alt="IA">
+    <!-- Asistente Inteligente UI -->
+    <div class="ai-button" id="aiToggle">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <div class="ai-panel" id="aiPanel">
+        <div class="ai-header">
+            <div>
+                <i class="fas fa-sparkles text-accent"></i> Guía IA
             </div>
-        </button>
-        
+            <i class="fas fa-times close-ai" id="aiClose"></i>
+        </div>
         <div class="ai-chat" id="aiChat">
-            <div class="chat-header">
-                <div>
-                    <span class="ai-title">Guía IA Pampa Hermosa</span>
-                    <span class="ai-status">En línea 🟢</span>
-                </div>
-                <button id="closeAi"><i class="fas fa-times"></i></button>
+            <div class="msg ai-msg">
+                Hola. Soy el asistente virtual del santuario. ¿Necesitas saber cómo llegar, qué empacar o datos de la fauna?
             </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="msg bot">
-                    👋 ¡Hola! Soy tu guía virtual. Puedo ayudarte a planificar tu viaje, darte datos curiosos o indicarte cómo llegar. ¿Qué deseas saber?
-                </div>
-            </div>
-            <div class="chat-suggestions">
-                <span class="chip" onclick="askAI('clima')">¿Cómo es el clima?</span>
-                <span class="chip" onclick="askAI('llegar')">¿Desde San Ramón?</span>
-                <span class="chip" onclick="askAI('curioso')">Dime un dato curioso</span>
-            </div>
-            <div class="chat-input">
-                <input type="text" id="userMsg" placeholder="Escribe otra duda...">
-                <button onclick="sendManualMsg()"><i class="fas fa-paper-plane"></i></button>
-            </div>
+        </div>
+        <div class="ai-suggestions">
+            <button onclick="sendQuickMsg('¿Ruta desde San Ramón?')">Ruta desde San Ramón</button>
+            <button onclick="sendQuickMsg('¿Clima y equipaje?')">Clima y equipaje</button>
+        </div>
+        <div class="ai-input-area">
+            <input type="text" id="aiInput" placeholder="Pregunta algo...">
+            <button onclick="sendManualMsg()"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
